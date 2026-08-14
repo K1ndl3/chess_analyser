@@ -1,58 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap");
+
 .search-bar {
+  --bg: #312e2b;
+  --bg-deep: #262421;
+  --surface: #3b3937;
+  --brand: #81b64c;
+  --brand-hover: #5d9948;
+  --on-brand: #17210d;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --border: rgba(255, 255, 255, 0.14);
+  --radius: 10px;
+
+  box-sizing: border-box;
   display: flex;
   align-items: stretch;
   gap: 0.75rem;
   width: min(42rem, 92vw);
   margin: 4.5rem auto 0;
   padding: 0.55rem;
-  background: #f7f6f3;
-  border: 1px solid #e2e0da;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(20, 24, 28, 0.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38);
+  font-family: "Nunito", "Segoe UI", sans-serif;
 }
 
 .search-bar input {
   flex: 1;
   min-width: 0;
   padding: 1rem 1.15rem;
-  border: none;
-  border-radius: 0.7rem;
-  background: #ffffff;
-  color: #1a1d21;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-deep);
+  color: var(--text);
   font-size: 1.125rem;
-  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-family: inherit;
   letter-spacing: 0.01em;
   outline: none;
-  transition: box-shadow 0.2s ease;
 }
 
 .search-bar input::placeholder {
-  color: #9a9ea6;
+  color: var(--text-muted);
 }
 
 .search-bar input:focus {
-  box-shadow: inset 0 0 0 2px #1f6f4a;
+  border-color: var(--brand);
+  box-shadow: inset 0 0 0 1px var(--brand);
 }
 
 .search-btn {
   flex-shrink: 0;
   padding: 0 1.6rem;
   border: none;
-  border-radius: 0.7rem;
-  background: #1f6f4a;
-  color: #f7f6f3;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: var(--on-brand);
   font-size: 1rem;
-  font-weight: 600;
-  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-family: inherit;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.search-bar input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .search-btn:hover {
-  background: #185a3c;
+  background: var(--brand-hover);
+}
+
+.search-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.search-btn:disabled:hover {
+  background: var(--brand);
 }
 
 .search-btn:active {
   transform: scale(0.98);
+}
+
+.search-btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .search-bar input {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .search-btn {
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
 }

@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #312e2b;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

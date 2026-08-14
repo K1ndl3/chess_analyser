@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap");
+
+.empty-state {
+  width: min(42rem, 92vw);
+  margin: 2.5rem auto 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.loading-overlay {
+  --bg-deep: #262421;
+  --surface: #3b3937;
+  --brand: #81b64c;
+  --gold: #f7c631;
+  --text-soft: rgba(255, 255, 255, 0.85);
+  --border: rgba(255, 255, 255, 0.14);
+  --board-light: #ebecd0;
+  --board-dark: #779556;
+  --radius: 10px;
+
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(38, 36, 33, 0.52);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  font-family: "Nunito", "Segoe UI", sans-serif;
+}
+
+.loading-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 16rem;
+  padding: 1.65rem 1.75rem 1.35rem;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38);
+}
+
+.loading-panel::before {
+  content: "";
+  display: block;
+  width: calc(100% + 3.5rem);
+  height: 8px;
+  margin: -1.65rem -1.75rem 0.35rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--board-dark) 0 14px,
+    var(--board-light) 14px 28px
+  );
+}
+
+.loading-panel p {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.spinner {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 3px solid rgba(129, 182, 76, 0.22);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading-overlay {
+    animation: overlay-in 0.22s ease;
+  }
+
+  .loading-panel {
+    animation: panel-in 0.28s ease;
+  }
+
+  .spinner {
+    animation: spin 0.75s linear infinite;
+  }
+}

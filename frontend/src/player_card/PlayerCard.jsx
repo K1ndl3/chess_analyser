@@ -1,3 +1,5 @@
+import "./PlayerCard.css"
+
 function PlayerCard({userRatingData, userProfileData}) {
     const chess_blitz = userRatingData?.chess_blitz?.last?.rating
     const chess_bullet = userRatingData?.chess_bullet?.last?.rating
