@@ -125,3 +125,15 @@
     border-color: rgba(129, 182, 76, 0.45);
   }
 }
+.user-header {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.user-header .username {
+  color: var(--text);
+  background-color: var(--bg-deep);
+  border-color: var(--board-light);
+  text-align: center;
+}

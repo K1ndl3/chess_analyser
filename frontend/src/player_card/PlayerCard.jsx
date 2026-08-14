@@ -11,7 +11,10 @@ function PlayerCard({userRatingData, userProfileData}) {
         <div className="card-container">
             <span className="profile-information">
                 <img src={profile_pic} alt="profile pic of user" />
-                <h3>League: {league}</h3>
+                <span className="user-header">
+                    <h3 className="username">{username}</h3>
+                    <h3>League: {league}</h3>
+                </span>
             </span>
             <span className="stats">
                 <h3>blitz: {chess_blitz}</h3>
