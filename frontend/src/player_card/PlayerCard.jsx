@@ -1,11 +1,11 @@
 import "./PlayerCard.css"
 
 function PlayerCard({userRatingData, userProfileData}) {
-    const chess_blitz = userRatingData?.chess_blitz?.last?.rating
-    const chess_bullet = userRatingData?.chess_bullet?.last?.rating
-    const chess_rapid = userRatingData?.chess_rapid?.last?.rating
-    const profile_pic = userProfileData?.avatar
-    const username = userProfileData?.username
+    const chess_blitz = userRatingData?.blitz
+    const chess_bullet = userRatingData?.bullet
+    const chess_rapid = userRatingData?.rapid
+    const profile_pic = userProfileData?.profile_pic
+    const username = userProfileData?.name
     const league = userProfileData?.league
     return (<>
         <div className="card-container">

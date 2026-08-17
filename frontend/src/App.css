@@ -2,7 +2,7 @@
 
 .empty-state {
   width: min(42rem, 92vw);
-  margin: 2.5rem auto 0;
+  margin: 1.5rem auto 0;
   color: rgba(255, 255, 255, 0.5);
   font-family: "Nunito", "Segoe UI", sans-serif;
   font-size: 1.05rem;

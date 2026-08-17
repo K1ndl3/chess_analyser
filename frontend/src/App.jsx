@@ -10,21 +10,26 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   async function fetchData(username) {
+    const trimmedUsername = username.trim()
+    if (!trimmedUsername) return
+
     setIsLoading(true)
     try {
-      const stats = await fetch(`https://api.chess.com/pub/player/${username}/stats`)
-      const stats_data = await stats.json()
-      setUserRatingData(stats_data)
-      console.log(stats_data)
+      const response = await fetch(
+        `http://localhost:8000/users/user_stats/${encodeURIComponent(trimmedUsername)}`
+      )
+      if (!response.ok) {
+        setIsAvailable(false)
+        return
+      }
 
-      const profile = await fetch(`https://api.chess.com/pub/player/${username}`)
-      const profile_data = await profile.json()
-      setProfileData(profile_data)
-      console.log(profile_data)
-
+      const data = await response.json()
+      setProfileData(data.profile)
+      setUserRatingData(data.rating)
       setIsAvailable(true)
     } catch (error) {
       console.log("error fetching: " + error)
+      setIsAvailable(false)
     } finally {
       setIsLoading(false)
     }
